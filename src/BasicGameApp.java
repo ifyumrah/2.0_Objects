@@ -65,9 +65,9 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100, 1, 0);
+		astro = new Astronaut(10,100, 5, 0);
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");
-		fox = new Astronaut(30,400, 5, 1);
+		fox = new Astronaut(30,400, 6, 5);
 
 
 	}// BasicGameApp()
@@ -95,8 +95,8 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
-		fox.move();
+		astro.bounce();
+		fox.bounce();
 
 	}
 	
