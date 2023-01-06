@@ -39,11 +39,15 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image monaPic;
+	public Image background;
+
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut fox;
+	private Astronaut mona;
 
 
    // Main method definition
@@ -67,8 +71,10 @@ public class BasicGameApp implements Runnable {
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
 		astro = new Astronaut(10,100, 5, 0);
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");
+		background = Toolkit.getDefaultToolkit().getImage("field.png");
 		fox = new Astronaut(30,400, 6, 5);
-
+		mona = new Astronaut(50,600,3,0);
+		monaPic = Toolkit.getDefaultToolkit().getImage("morgana.png");
 
 	}// BasicGameApp()
 
@@ -97,6 +103,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		astro.bounce();
 		fox.bounce();
+		mona.bounce();
 
 	}
 	
@@ -147,9 +154,13 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background,0,0,WIDTH,HEIGHT,null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
 		g.drawImage(astroPic, fox.xpos, fox.ypos, fox.width, fox.height, null);
-
+		g.drawImage(monaPic, mona.xpos, mona.ypos, mona.width, mona.height, null );
+		g.draw(new Rectangle(astro.xpos,astro.ypos,astro.height,astro.width));
+		g.draw(new Rectangle(fox.xpos,fox.ypos,fox.height,fox.width));
+		g.draw(new Rectangle(mona.xpos,mona.ypos,mona.height,mona.width));
 		g.dispose();
 
 		bufferStrategy.show();
