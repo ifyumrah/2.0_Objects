@@ -97,10 +97,18 @@ public class BasicGameApp implements Runnable {
 		}
 	}
 
+	public void crash()
+	{
+		if(astro.rec.intersects(fox.rec)){
+			System.out.println("crash");
+		}
+	}
 
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
+		fox.bump();
+		crash();
 		astro.bounce();
 		fox.bounce();
 		mona.bounce();

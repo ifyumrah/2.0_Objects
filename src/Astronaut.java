@@ -73,6 +73,17 @@ public class Astronaut {
             ypos = ypos + dy;
         rec = new Rectangle(xpos,ypos,height,width);
         }
+
+       public void bump()
+        {  if(rec.intersects(rec)){
+            System.out.println("bump");
+            dx = -dx;
+           dy = -dy;
+        }
+            xpos = xpos + dx;
+            ypos = ypos + dy;     rec = new Rectangle(xpos,ypos,height,width);
+
+        }
     }
 
 
