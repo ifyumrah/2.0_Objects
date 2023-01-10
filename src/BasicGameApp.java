@@ -43,6 +43,7 @@ public class BasicGameApp implements Runnable {
 	public Image background;
 
 
+
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
@@ -73,7 +74,7 @@ public class BasicGameApp implements Runnable {
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");
 		background = Toolkit.getDefaultToolkit().getImage("field.png");
 		fox = new Astronaut(30,400, 6, 5);
-		mona = new Astronaut(50,600,3,0);
+		mona = new Astronaut(50,600,3,4);
 		monaPic = Toolkit.getDefaultToolkit().getImage("morgana.png");
 
 	}// BasicGameApp()
@@ -101,13 +102,29 @@ public class BasicGameApp implements Runnable {
 	{
 		if(astro.rec.intersects(fox.rec)){
 			System.out.println("crash");
+			astro.dx = -astro.dx;
+			astro.dy = -astro.dy;
+		}
+
+		if(astro.rec.intersects((fox.rec))){
+			fox.dx = -fox.dx;
+			fox.dy = -fox.dy;
+	}
+		if(mona.rec.intersects(astro.rec) || (mona.rec.intersects(fox.rec))){
+//			fox.dx = -fox.dx;
+//			fox.dy = -fox.dy;
+//			mona.dx = -mona.dx;
+//			mona.dy = -mona.dy;
+			mona.width = 1+mona.width;
+			mona.height = 1+mona.height;
+
 		}
 	}
 
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		fox.bump();
+//		fox.bump();
 		crash();
 		astro.bounce();
 		fox.bounce();
