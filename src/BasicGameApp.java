@@ -102,32 +102,29 @@ public class BasicGameApp implements Runnable {
 	{
 		if(astro.rec.intersects(fox.rec)){
 			System.out.println("crash");
-			fox.isAlive = false;
-//			astro.dx = -astro.dx;
-//			astro.dy = -astro.dy;
+			astro.dx = -astro.dx;
+			astro.dy = -astro.dy;
 		}
 
-		if(astro.rec.intersects((fox.rec))){
-//			fox.dx = -fox.dx;
-//			fox.dy = -fox.dy;
-			if (fox.isAlive = false);{
-				System.out.println("die");
-				fox.width = 0;
-				fox.height = 0;
-
-			}
-
+		if(astro.rec.intersects((fox.rec)) && fox.isAlive ==true && astro.isAlive ==true){
+			fox.dx = -fox.dx;
+			fox.dy = -fox.dy;
 	}
-		if(mona.rec.intersects(astro.rec) || (mona.rec.intersects(fox.rec))){
+		if(mona.rec.intersects(astro.rec)) {
 //			fox.dx = -fox.dx;
 //			fox.dy = -fox.dy;
 //			mona.dx = -mona.dx;
 //			mona.dy = -mona.dy;
-			mona.width = 1+mona.width;
-			mona.height = 1+mona.height;
+			mona.width = 1 + mona.width;
+			mona.height = 1 + mona.height;
+		}
+
+		if(mona.rec.intersects(fox.rec)){
+				fox.isAlive = false;
+		}
 
 		}
-	}
+
 
 	public void moveThings()
 	{
@@ -189,10 +186,12 @@ public class BasicGameApp implements Runnable {
       //draw the image of the astronaut
 		g.drawImage(background,0,0,WIDTH,HEIGHT,null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astroPic, fox.xpos, fox.ypos, fox.width, fox.height, null);
+		if (fox.isAlive == true){
+			g.drawImage(astroPic, fox.xpos, fox.ypos, fox.width, fox.height, null);
+			g.draw(new Rectangle(fox.xpos,fox.ypos,fox.height,fox.width));
+		}
 		g.drawImage(monaPic, mona.xpos, mona.ypos, mona.width, mona.height, null );
 		g.draw(new Rectangle(astro.xpos,astro.ypos,astro.height,astro.width));
-		g.draw(new Rectangle(fox.xpos,fox.ypos,fox.height,fox.width));
 		g.draw(new Rectangle(mona.xpos,mona.ypos,mona.height,mona.width));
 		g.dispose();
 
