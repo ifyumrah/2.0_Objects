@@ -34,7 +34,7 @@ public class Astronaut {
         dy = pDy;
         width = 60;
         height = 60;
-        isAlive = true;
+//        isAlive = true;
         rec = new Rectangle(xpos,ypos,height,width);
 
     } // constructor

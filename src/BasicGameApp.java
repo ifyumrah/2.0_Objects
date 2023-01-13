@@ -102,13 +102,21 @@ public class BasicGameApp implements Runnable {
 	{
 		if(astro.rec.intersects(fox.rec)){
 			System.out.println("crash");
-			astro.dx = -astro.dx;
-			astro.dy = -astro.dy;
+			fox.isAlive = false;
+//			astro.dx = -astro.dx;
+//			astro.dy = -astro.dy;
 		}
 
 		if(astro.rec.intersects((fox.rec))){
-			fox.dx = -fox.dx;
-			fox.dy = -fox.dy;
+//			fox.dx = -fox.dx;
+//			fox.dy = -fox.dy;
+			if (fox.isAlive = false);{
+				System.out.println("die");
+				fox.width = 0;
+				fox.height = 0;
+
+			}
+
 	}
 		if(mona.rec.intersects(astro.rec) || (mona.rec.intersects(fox.rec))){
 //			fox.dx = -fox.dx;
